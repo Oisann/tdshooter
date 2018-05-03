@@ -25,11 +25,12 @@ namespace Oisann.Player {
 
 		private void Update() {
 			if(identity.isLocalPlayer) {
-				yaw += 2f * Input.GetAxis("Mouse X");
-				transform.rotation = Quaternion.Euler(0f, yaw, 0f);
-				float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : movementSpeed;
-				velocity = rb.transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized * speed);
-
+				if(Cursor.lockState == CursorLockMode.Locked) {
+					yaw += 2f * Input.GetAxis("Mouse X");
+					transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+					float speed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : movementSpeed;
+					velocity = rb.transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized * speed);
+				}
 				if(Cursor.lockState != CursorLockMode.Locked && Input.GetButton("Fire1")) {
 					Cursor.lockState = CursorLockMode.Locked;
 				}

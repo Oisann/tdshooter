@@ -88,6 +88,7 @@ namespace Oisann.Networking {
 		}
 
 		public IEnumerator ExecuteCommand(string command, string arguments) {
+			UINetStats.instance.UpdateRecieved(bytesRecieved);
 			var json = JSON.Parse(arguments);
 			Vector3 pos = Vector3.zero;
 			Vector3 rot = Vector3.zero;
@@ -140,6 +141,7 @@ namespace Oisann.Networking {
 		public void SendData(byte[] bytes) {
 			client.SendTo(bytes, endPoint);
 			bytesSent += bytes.LongLength;
+			UINetStats.instance.UpdateSent(bytesSent);
 			//Debug.Log("Sent data to " + IP + ":" + PORT + ". Size: " + bytes.Length);
 		}
 
@@ -169,7 +171,7 @@ namespace Oisann.Networking {
 				//SendData("a");
 				lastPing = Time.time;
 			}
-			PingUpdater.instance.UpdatePing(pingInMs);
+			UINetStats.instance.UpdatePing(pingInMs);
 		}
 	}
 }

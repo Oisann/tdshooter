@@ -11,6 +11,7 @@ namespace Oisann.Networking {
 			foreach(Behaviour b in behaviours) {
 				b.enabled = id.isLocalPlayer;
 			}
+			Destroy(this);
 		}
 	}
 }

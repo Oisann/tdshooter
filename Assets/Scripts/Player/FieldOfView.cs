@@ -38,7 +38,7 @@ namespace Oisann.Player {
 				ViewCastInfo newViewCast = ViewCast(angle);
 
 				if(i > 0) {
-					bool edgeDistanceThresholdExceeded = Mathf.Abs(oldViewCast.distance - newViewCast.distance) > edgeDistanceThreshold;
+					bool edgeDistanceThresholdExceeded = ExceededEdgeDistanceThreshold(oldViewCast, newViewCast);
 					if(oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDistanceThresholdExceeded)) {
 						EdgeInfo edge = FindEdge(oldViewCast, newViewCast);
 						if(edge.pointA != Vector3.zero) {
@@ -84,7 +84,7 @@ namespace Oisann.Player {
 				float angle = (minAngle + maxAngle) / 2;
 				ViewCastInfo newViewCast = ViewCast(angle);
 
-				bool edgeDistanceThresholdExceeded = Mathf.Abs(minViewCast.distance - newViewCast.distance) > edgeDistanceThreshold;
+				bool edgeDistanceThresholdExceeded = ExceededEdgeDistanceThreshold(minViewCast, newViewCast);
 				if(newViewCast.hit == minViewCast.hit && !edgeDistanceThresholdExceeded) {
 					minAngle = angle;
 					minPoint = newViewCast.point;
@@ -94,6 +94,10 @@ namespace Oisann.Player {
 				}
 			}
 			return new EdgeInfo(minPoint, maxPoint);
+		}
+
+		private bool ExceededEdgeDistanceThreshold(ViewCastInfo oldViewCast, ViewCastInfo newViewCast) {
+			return Mathf.Abs(oldViewCast.distance - newViewCast.distance) > edgeDistanceThreshold;
 		}
 
 		private ViewCastInfo ViewCast(float globalAngle) {
