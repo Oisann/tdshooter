@@ -708,8 +708,7 @@ Prefab:
     - target: {fileID: 1122745886345898, guid: 2104d6a72ccc18e4bbd4fbcca942c58e, type: 2}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2104d6a72ccc18e4bbd4fbcca942c58e, type: 2}
   m_IsPrefabParent: 0
@@ -1558,6 +1557,26 @@ Prefab:
         type: 2}
       propertyPath: isLocalPlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403298384603350, guid: e4d166b51abdf0847acca7dbd8725800,
+        type: 2}
+      propertyPath: fogColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403298384603350, guid: e4d166b51abdf0847acca7dbd8725800,
+        type: 2}
+      propertyPath: fogColor.r
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403298384603350, guid: e4d166b51abdf0847acca7dbd8725800,
+        type: 2}
+      propertyPath: fogColor.g
+      value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403298384603350, guid: e4d166b51abdf0847acca7dbd8725800,
+        type: 2}
+      propertyPath: fogColor.b
+      value: 0.8392157
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4d166b51abdf0847acca7dbd8725800, type: 2}
